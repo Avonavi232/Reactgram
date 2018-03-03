@@ -1,8 +1,9 @@
 import React from 'react';
+
 import Range from './Range';
 
 function Settings({ settings, handleChange }) {
-    const {contrast, hue, brightness, saturate, sepia} = settings;
+    const { contrast, hue, brightness, saturate, sepia } = settings;
 
     return (
         <aside className="settings">
@@ -11,36 +12,35 @@ function Settings({ settings, handleChange }) {
                 value={contrast}
                 min={0}
                 max={200}
-                onChange={handleChange}
-            />
+                onChange={handleChange} />
+
             <Range
                 name="hue"
                 value={hue}
                 min={-360}
                 max={360}
-                onChange={handleChange}
-            />
+                onChange={handleChange} />
+
             <Range
                 name="brightness"
-                value={brightness}
                 min={0}
                 max={200}
-                onChange={handleChange}
-            />
+                value={brightness}
+                onChange={handleChange} />
+
             <Range
                 name="saturate"
-                value={saturate}
                 min={0}
                 max={100}
-                onChange={handleChange}
-            />
+                value={saturate}
+                onChange={handleChange} />
+
             <Range
                 name="sepia"
-                value={sepia}
                 min={0}
                 max={100}
-                onChange={handleChange}
-            />
+                value={sepia}
+                onChange={handleChange} />
         </aside>
     );
 }

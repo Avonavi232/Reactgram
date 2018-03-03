@@ -2,21 +2,20 @@ import React from 'react';
 
 function Range({ name, value, min, max, onChange }) {
     return (
-        <div className="settings">
+        <div className="setting">
             <label>
                 <div>{name}</div>
                 <div>{value}</div>
             </label>
 
             <input
-                type="range"
                 id={name}
+                type="range"
                 value={value}
-                step={1}
+                step="1"
                 min={min}
                 max={max}
-                onChange={onChange}
-            />
+                onChange={onChange} />
         </div>
     );
 }
