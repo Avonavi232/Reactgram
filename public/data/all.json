@@ -1,0 +1,14 @@
+[
+  {
+    "id": "idOfObject1",
+    "name": "object1"
+  },
+  {
+    "id": "idOfObject2",
+    "name": "object2"
+  },
+  {
+    "id": "idOfObject3",
+    "name": "object3"
+  }
+]
