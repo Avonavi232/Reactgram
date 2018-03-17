@@ -1,32 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import PropTypes from 'prop-types';
 
+import todos from './todos';
+import App from './App.jsx';
+
+import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import Game from './containers/Game';
 import reducer from './reducers';
 
-import registerServiceWorker from './registerServiceWorker';
-
-import './index.css'
+import './App.css';
 
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-    reducer, /* preloadedState, */
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
-/* eslint-enable */
-
+const store = createStore(reducer, todos);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Game />
-    </Provider>,
-    document.getElementById('root')
+		<Provider store={store}>
+			<App/>
+		</Provider>,
+		document.getElementById('root')
 );
-
-
-registerServiceWorker();
