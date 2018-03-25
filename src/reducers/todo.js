@@ -1,8 +1,10 @@
-import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO} from '../actions';
+import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO, GET_TODOS} from '../actions';
 
 
 function todoReducer(state = {}, action) {
 	switch (action.type) {
+		case GET_TODOS:
+			return action.todos;
 		case ADD_TODO:
 			return {
 				id: action.id,
@@ -27,13 +29,17 @@ function todoReducer(state = {}, action) {
 				title: action.title
 			});
 
-		default: return state;
+		default:
+			return state;
 	}
 }
 
 
 export default function reducer(state = [], action) {
 	switch (action.type) {
+		case GET_TODOS:
+			return action.todos;
+
 		case ADD_TODO:
 			return [...state, todoReducer(undefined, action)];
 

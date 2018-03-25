@@ -6,6 +6,10 @@ import { Provider } from 'react-redux';
 import store from './store/index';
 import App from './App.jsx';
 import './App.css';
+import {getTodos, addTodo} from "./actions";
+
+
+store.dispatch(getTodos());
 
 
 ReactDOM.render(
