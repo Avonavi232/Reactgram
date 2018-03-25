@@ -1,59 +1,15 @@
-import {ADD_TODO, DELETE_TODO, EDIT_TODO, TOGGLE_TODO} from '../actions';
+import { combineReducers } from 'redux';
 
+import todos, * as fromTodos from './todo';
+import {default as filterReducer} from './filter';
 
-function todoReducer(state = {}, action) {
-	switch (action.type) {
-		case ADD_TODO:
-			return {
-				id: action.id,
-				title: action.title,
-				completed: false
-			};
-		case TOGGLE_TODO:
-			if (state.id !== action.id) {
-				return state;
-			}
+const reducer = combineReducers({
+	todos,
+	filter: filterReducer
+});
 
-			return Object.assign({}, state, {
-				completed: !state.completed
-			});
+export default reducer
 
-		case EDIT_TODO:
-			if (state.id !== action.id) {
-				return state;
-			}
-
-			return Object.assign({}, state, {
-				title: action.title
-			});
-
-		default: return state;
-	}
-}
-
-
-export default function reducer(state = [], action) {
-	switch (action.type) {
-		case ADD_TODO:
-			return [...state, todoReducer(undefined, action)];
-
-		case DELETE_TODO:
-			const index = state.findIndex(todo => todo.id === action.id);
-			if (index !== -1) {
-				return [
-					...state.slice(0, index),
-					...state.slice(index + 1)
-				];
-			} else return state;
-
-
-		case TOGGLE_TODO:
-			return state.map(todo => todoReducer(todo, action));
-
-		case EDIT_TODO:
-			return state.map(todo => todoReducer(todo, action));
-
-		default:
-			return state;
-	}
+export function getFilteredTodos(state) {
+	return fromTodos.getFilteredTodos(state.todos, state.filter)
 }
